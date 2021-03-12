@@ -1,0 +1,13 @@
+.*
+!/.bazelrc
+!/.bazelversion
+!/.editorconfig
+!/.envrc
+!/.gitattributes
+!/.gitignore
+!/.yamllint
+# idea
+/*.iml
+out/
+# project specific
+/bazel-*
