@@ -8,7 +8,6 @@ java_library(
         "//src/main/java/de/melsicon/example/validation/self_validating",
         "//src/main/java/de/melsicon/example/validation/self_validating/inheritance",
         "//toolchain:checker",
-        "//toolchain:nullaway",
         "//toolchain:truth",
         "@maven//:jakarta_validation_jakarta_validation_api",
     ],

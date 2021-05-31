@@ -7,7 +7,6 @@ java_library(
     deps = [
         "//src/main/java/de/melsicon/example/validation/pojo",
         "//toolchain:checker",
-        "//toolchain:nullaway",
         "//toolchain:truth",
     ],
 )

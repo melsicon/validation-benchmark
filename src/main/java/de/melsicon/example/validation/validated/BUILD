@@ -8,7 +8,6 @@ java_library(
         "//toolchain:checker",
         "//toolchain:immutables",
         "//toolchain:lombok",
-        "//toolchain:nullaway",
         "@maven//:com_google_errorprone_error_prone_annotations",
         "@maven//:jakarta_validation_jakarta_validation_api",
     ],

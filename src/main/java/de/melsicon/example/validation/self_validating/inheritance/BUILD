@@ -8,7 +8,6 @@ java_library(
         "//src/main/java/de/melsicon/example/validation/self_validating",
         "//toolchain:checker",
         "//toolchain:lombok",
-        "//toolchain:nullaway",
         "@maven//:com_google_errorprone_error_prone_annotations",
         "@maven//:jakarta_validation_jakarta_validation_api",
     ],

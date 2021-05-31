@@ -12,8 +12,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
   "MultiVariableDeclaration",
   "UnnecessarilyFullyQualified",
   "Var",
-  "keyfor:type.anno.before.modifier",
-  "nullness:type.anno.before.modifier",
+  "allcheckers:type.anno.before.modifier",
 })
 @Immutable
 @Value

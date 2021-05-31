@@ -7,7 +7,6 @@ java_library(
     deps = [
         "//src/main/java/de/melsicon/example/validation/immutables",
         "//toolchain:checker",
-        "//toolchain:nullaway",
         "//toolchain:truth",
     ],
 )

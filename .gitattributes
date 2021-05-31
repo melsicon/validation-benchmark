@@ -1,7 +1,9 @@
 * text=auto
 *.java text
+*.kts text
 *.adoc text
 *.json text
+BUILD text
 *.bat text eol=crlf
 *.bin filter=lfs diff=lfs merge=lfs -text
 *.png filter=lfs diff=lfs merge=lfs -text

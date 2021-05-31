@@ -212,6 +212,12 @@ bazel run //:jee9-benchmark
 
 for the Jakarta Bean Validation 3.0 variant.
 
+If you have a local JDK ≥ 11 installed you could also use Gradle:
+[source,shell]
+----
+./gradlew :run
+----
+
 === Tests
 
 To run all tests, use

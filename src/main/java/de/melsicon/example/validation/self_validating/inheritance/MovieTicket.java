@@ -12,8 +12,7 @@ import lombok.experimental.NonFinal;
   "MultiVariableDeclaration",
   "UnnecessarilyFullyQualified",
   "Var",
-  "keyfor:type.anno.before.modifier",
-  "nullness:type.anno.before.modifier",
+  "allcheckers:type.anno.before.modifier",
 })
 @Immutable
 @NonFinal
@@ -25,7 +24,7 @@ public class MovieTicket extends SelfValidating<Object> {
   @Min(1L)
   long serial;
 
-  @SuppressWarnings("nullness:method.invocation.invalid") // Don't try this at home
+  @SuppressWarnings("nullness:method.invocation") // Don't try this at home
   public MovieTicket(String movieName, long serial) {
     this.movieName = movieName;
     this.serial = serial;

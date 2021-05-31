@@ -4,7 +4,8 @@ load("@rules_java//java:defs.bzl", "java_library", "java_package_configuration",
 default_java_toolchain(
     name = "toolchain_java11",
     package_configuration = [
-        ":src_configuration",
+        ":src_package_configuration",
+        ":external_package_configuration",
     ],
     source_version = "11",
     target_version = "11",
@@ -16,9 +17,12 @@ default_java_toolchain(
 )
 
 JAVACOPTS = [
+    "-ArequirePrefixInWarningSuppressions",
+    "-AwarnUnneededSuppressions",
+    "-AshowSuppressWarningsStrings",
     "-Werror",
-    "-Xpkginfo:always",
-    "-XepExcludedPaths:.*/bazel-out/.*",
+    "-Xpkginfo:nonempty",
+    "-XepExcludedPaths:.*/_javac/.*",
     "-XepDisableWarningsInGeneratedCode",
     "-XepAllDisabledChecksAsWarnings",
     "-Xep:Java7ApiChecker:OFF",
@@ -26,56 +30,57 @@ JAVACOPTS = [
     "-Xep:StaticOrDefaultInterfaceMethod:OFF",
     "-Xep:NoFunctionalReturnType:OFF",
     "-Xep:WildcardImport:OFF",
-    "-Xep:NullAway:ERROR",
-    "-XepOpt:NullAway:AnnotatedPackages=de.melsicon",
-    "-XepOpt:NullAway:TreatGeneratedAsUnannotated",
-    "-XepOpt:NullAway:CheckOptionalEmptiness",
-    "-XepOpt:NullAway:AcknowledgeRestrictiveAnnotations",
-    "-XepOpt:NullAway:CustomInitializerAnnotations=org.junit.Before,org.junit.BeforeClass,org.openjdk.jmh.annotations.Setup",
-    "-XepOpt:NullAway:ExcludedFieldAnnotations=org.openjdk.jmh.annotations.Param",
 ]
 
 java_package_configuration(
-    name = "src_configuration",
+    name = "src_package_configuration",
     javacopts = JAVACOPTS,
-    packages = [":src_group"],
+    packages = [":src_package_group"],
 )
 
 package_group(
-    name = "src_group",
+    name = "src_package_group",
     packages = [
         "//src/...",
     ],
 )
 
-# ---
-# https://github.com/uber/NullAway/wiki
-
-java_plugin(
-    name = "nullaway_processor",
-    deps = ["@maven//:com_uber_nullaway_nullaway"],
+java_package_configuration(
+    name = "external_package_configuration",
+    javacopts = ["-Xlint:none"],
+    packages = [":external_package_group"],
 )
 
-java_library(
-    name = "nullaway",
-    exported_plugins = ["nullaway_processor"],
-    neverlink = True,
-    visibility = ["//visibility:public"],
-    exports = ["@maven//:org_checkerframework_checker_qual"],
+package_group(
+    name = "external_package_group",
+    packages = [
+        "-//src/...",
+        "//...",
+    ],
 )
 
 # ---
 # https://checkerframework.org/manual/#nullness-checker
+# https://checkerframework.org/manual/#optional-checker
 
 java_plugin(
-    name = "checker_processor",
+    name = "nullness_checker",
     processor_class = "org.checkerframework.checker.nullness.NullnessChecker",
+    deps = ["@maven//:org_checkerframework_checker"],
+)
+
+java_plugin(
+    name = "optional_checker",
+    processor_class = "org.checkerframework.checker.optional.OptionalChecker",
     deps = ["@maven//:org_checkerframework_checker"],
 )
 
 java_library(
     name = "checker",
-    exported_plugins = ["checker_processor"],
+    exported_plugins = [
+        "nullness_checker",
+        "optional_checker",
+    ],
     neverlink = True,
     visibility = ["//visibility:public"],
     exports = ["@maven//:org_checkerframework_checker_qual"],

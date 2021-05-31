@@ -16,7 +16,7 @@ public final class PersonTest {
   }
 
   @Test
-  @SuppressWarnings({"NullAway", "nullness:argument.type.incompatible"})
+  @SuppressWarnings("nullness:argument")
   public void givenNameRequired() {
     assertThrows(NullPointerException.class, () -> new Person(null, null));
   }

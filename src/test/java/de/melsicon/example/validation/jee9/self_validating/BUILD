@@ -7,7 +7,6 @@ java_library(
     deps = [
         "//src/main/java/de/melsicon/example/validation/jee9/self_validating",
         "//toolchain:checker",
-        "//toolchain:nullaway",
         "//toolchain:truth",
         "@jee9//:jakarta_validation_jakarta_validation_api",
     ],

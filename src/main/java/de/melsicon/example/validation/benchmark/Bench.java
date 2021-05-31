@@ -7,6 +7,8 @@ import de.melsicon.example.validation.validated.PersonFactory;
 import javax.validation.Validation;
 import javax.validation.ValidatorFactory;
 import org.checkerframework.checker.nullness.qual.EnsuresNonNull;
+import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
+import org.checkerframework.checker.nullness.qual.RequiresNonNull;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Fork;
@@ -31,8 +33,9 @@ public class Bench {
   }
 
   @Benchmark
+  @RequiresNonNull({"#1.factory"})
   public de.melsicon.example.validation.validated.Person validated(
-      de.melsicon.example.validation.benchmark.Bench.MyState myState) {
+      MyState myState) {
     return myState.factory.create("Kartini", null);
   }
 
@@ -48,8 +51,8 @@ public class Bench {
 
   @State(Scope.Benchmark)
   public static class MyState {
-    public PersonFactory factory;
-    private ValidatorFactory validatorFactory;
+    public @MonotonicNonNull PersonFactory factory;
+    private @MonotonicNonNull ValidatorFactory validatorFactory;
 
     @EnsuresNonNull({"validatorFactory", "factory"})
     @Setup
@@ -59,6 +62,7 @@ public class Bench {
     }
 
     @TearDown(Level.Trial)
+    @RequiresNonNull({"validatorFactory"})
     public void tearDown() {
       validatorFactory.close();
     }

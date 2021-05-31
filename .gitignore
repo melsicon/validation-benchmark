@@ -1,6 +1,7 @@
 .*
 !/.bazelrc
 !/.bazelversion
+!/.bazelignore
 !/.editorconfig
 !/.envrc
 !/.gitattributes
@@ -11,3 +12,4 @@
 out/
 # project specific
 /bazel-*
+gradle-*/

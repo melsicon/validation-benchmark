@@ -21,9 +21,9 @@ bazel_skylib_workspace()
 
 http_archive(
     name = "rules_jvm_external",
-    sha256 = "31d226a6b3f5362b59d261abf9601116094ea4ae2aa9f28789b6c105e4cada68",
-    strip_prefix = "rules_jvm_external-4.0",
-    url = "https://github.com/bazelbuild/rules_jvm_external/archive/4.0.tar.gz",
+    sha256 = "995ea6b5f41e14e1a17088b727dcff342b2c6534104e73d6f06f1ae0422c2308",
+    strip_prefix = "rules_jvm_external-4.1",
+    url = "https://github.com/bazelbuild/rules_jvm_external/archive/4.1.tar.gz",
 )
 
 load("@rules_jvm_external//:defs.bzl", "maven_install")
@@ -47,33 +47,30 @@ rules_java_toolchains()
 
 maven_install(
     artifacts = [
-        "com.google.errorprone:error_prone_annotations:2.5.1",
-        "com.google.guava:guava:30.1-jre",
-        "com.uber.nullaway:nullaway:0.8.0",
+        "com.google.errorprone:error_prone_annotations:2.7.1",
+        "com.google.guava:guava:30.1.1-jre",
         "jakarta.validation:jakarta.validation-api:2.0.2",
-        "org.checkerframework:checker-qual:3.11.0",
-        "org.checkerframework:checker-util:3.11.0",
-        "org.checkerframework:checker:3.11.0",
+        "org.checkerframework:checker-qual:3.13.0",
+        "org.checkerframework:checker-util:3.13.0",
+        "org.checkerframework:checker:3.13.0",
         "org.glassfish:jakarta.el:3.0.3",
         "org.hibernate.validator:hibernate-validator:6.2.0.Final",
-        "org.immutables.dependency:utility:2.8.0",
-        "org.immutables:builder:2.8.8",
-        "org.immutables:value-annotations:2.8.8",
-        "org.immutables:value-processor:2.8.8",
-        "org.openjdk.jmh:jmh-core:1.28",
-        "org.openjdk.jmh:jmh-generator-annprocess:1.28",
+        "org.immutables:value-annotations:2.9.0-beta2",
+        "org.immutables:value-processor:2.9.0-beta2",
+        "org.openjdk.jmh:jmh-core:1.32",
+        "org.openjdk.jmh:jmh-generator-annprocess:1.32",
         "org.ow2.asm:asm:9.1",
-        "org.projectlombok:lombok:1.18.18",
+        "org.projectlombok:lombok:1.18.20",
         maven.artifact(
             "com.google.truth",
             "truth",
-            "1.1.2",
+            "1.1.3",
             testonly = True,
         ),
         maven.artifact(
             "com.google.truth.extensions",
             "truth-java8-extension",
-            "1.1.2",
+            "1.1.3",
             testonly = True,
         ),
         maven.artifact(
