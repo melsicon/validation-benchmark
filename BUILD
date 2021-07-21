@@ -3,6 +3,8 @@ load("@rules_java//java:defs.bzl", "java_binary")
 exports_files(["lombok.config"])
 
 JVM_FLAGS = [
+    "--add-opens",
+    "java.base/java.io=ALL-UNNAMED",
     "-Djava.util.logging.config.file=conf/logging.properties",
     "-XX:+CrashOnOutOfMemoryError",
 ]

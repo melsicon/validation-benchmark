@@ -46,8 +46,8 @@ dependencies {
   implementation("org.openjdk.jmh:jmh-core:1.32")
   annotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:1.32")
 
-  compileOnly("org.checkerframework:checker-qual:3.15.0")
-  testCompileOnly("org.checkerframework:checker-qual:3.15.0")
+  compileOnly("org.checkerframework:checker-qual:3.16.0")
+  testCompileOnly("org.checkerframework:checker-qual:3.16.0")
 
   implementation("com.google.guava:guava:30.1.1-jre")
   implementation("jakarta.validation:jakarta.validation-api:3.0.0")
