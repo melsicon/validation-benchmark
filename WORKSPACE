@@ -18,18 +18,18 @@ load("@rules_jvm_external//:specs.bzl", "maven")
 
 maven_install(
     artifacts = [
-        "com.google.errorprone:error_prone_annotations:2.7.1",
+        "com.google.errorprone:error_prone_annotations:2.8.1",
         "com.google.guava:guava:30.1.1-jre",
         "jakarta.validation:jakarta.validation-api:2.0.2",
-        "org.checkerframework:checker-qual:3.16.0",
-        "org.checkerframework:checker-util:3.16.0",
-        "org.checkerframework:checker:3.16.0",
+        "org.checkerframework:checker-qual:3.17.0",
+        "org.checkerframework:checker-util:3.17.0",
+        "org.checkerframework:checker:3.17.0",
         "org.glassfish:jakarta.el:3.0.3",
         "org.hibernate.validator:hibernate-validator:6.2.0.Final",
         "org.immutables:value-annotations:2.9.0-beta3",
         "org.immutables:value-processor:2.9.0-beta3",
-        "org.openjdk.jmh:jmh-core:1.32",
-        "org.openjdk.jmh:jmh-generator-annprocess:1.32",
+        "org.openjdk.jmh:jmh-core:1.33",
+        "org.openjdk.jmh:jmh-generator-annprocess:1.33",
         "org.ow2.asm:asm:9.2",
         "org.projectlombok:lombok:1.18.20",
         maven.artifact(

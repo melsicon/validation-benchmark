@@ -38,11 +38,11 @@ dependencies {
   compileOnly("org.immutables:value-annotations:2.9.0-beta3")
   annotationProcessor("org.immutables:value-processor:2.9.0-beta3")
 
-  implementation("org.openjdk.jmh:jmh-core:1.32")
-  annotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:1.32")
+  implementation("org.openjdk.jmh:jmh-core:1.33")
+  annotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:1.33")
 
-  compileOnly("org.checkerframework:checker-qual:3.16.0")
-  testCompileOnly("org.checkerframework:checker-qual:3.16.0")
+  compileOnly("org.checkerframework:checker-qual:3.17.0")
+  testCompileOnly("org.checkerframework:checker-qual:3.17.0")
 
   implementation("com.google.guava:guava:30.1.1-jre")
   implementation("jakarta.validation:jakarta.validation-api:2.0.2")
