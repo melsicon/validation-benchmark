@@ -17,6 +17,7 @@ public class MovieTicketTest {
   @Test
   public void cantInstantiate() {
     var person = new Person("Some", "Guy");
-    assertThrows(ConstraintViolationException.class, () -> new SoldMovieTicket("A Movie", 1L, person));
+    assertThrows(
+        ConstraintViolationException.class, () -> new SoldMovieTicket("A Movie", 1L, person));
   }
 }

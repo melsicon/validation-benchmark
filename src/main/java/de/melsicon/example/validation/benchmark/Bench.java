@@ -34,8 +34,7 @@ public class Bench {
 
   @Benchmark
   @RequiresNonNull({"#1.factory"})
-  public de.melsicon.example.validation.validated.Person validated(
-      MyState myState) {
+  public de.melsicon.example.validation.validated.Person validated(MyState myState) {
     return myState.factory.create("Kartini", null);
   }
 

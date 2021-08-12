@@ -101,7 +101,10 @@ java_library(
     exported_plugins = ["immutables_processor"],
     neverlink = True,
     visibility = ["//visibility:public"],
-    exports = ["@maven//:org_immutables_value_annotations"],
+    exports = [
+        "@maven//:com_google_code_findbugs_jsr305",
+        "@maven//:org_immutables_value_annotations",
+    ],
 )
 
 # ---

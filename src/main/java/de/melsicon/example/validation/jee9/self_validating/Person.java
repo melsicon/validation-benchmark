@@ -9,10 +9,10 @@ import lombok.Value;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 @SuppressWarnings({
-    "MultiVariableDeclaration",
-    "UnnecessarilyFullyQualified",
-    "Var",
-    "allcheckers:type.anno.before.modifier",
+  "MultiVariableDeclaration",
+  "UnnecessarilyFullyQualified",
+  "Var",
+  "allcheckers:type.anno.before.modifier",
 })
 @Immutable
 @Value

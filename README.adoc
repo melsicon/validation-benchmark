@@ -127,7 +127,7 @@ used, ...__`"
 
 Since Project Lombok is clearly _byte code enhancing_, we need to annotate the _properties_. Which
 forces us to use JavaBeans-style naming conventions and the
-https://projectlombok.org/features/experimental/onX[experimental] `onMethod_=` option (the
+https://projectlombok.org/features/experimental/onX[experimental] `onMethod_` option (the
 underscore is important).
 
 We end up with
@@ -162,11 +162,11 @@ optional surname.
 [source,java,linenums]
 ----
 @Value.Immutable
-public abstract class Person {
+public abstract class Person implements WithPerson {
   /* package */ Person() {}
 
-  public static ImmutablePerson.Builder builder() {
-    return ImmutablePerson.builder();
+  public static Builder builder() {
+    return new Builder();
   }
 
   public abstract String givenName();
@@ -175,9 +175,13 @@ public abstract class Person {
 
   @Value.Check
   /* package */ void check() {
-    checkState(!givenName().isEmpty(), "Given name must not be empty");
-    checkState(!(surname().isPresent() && surname().get().isEmpty()), "Surname must not be empty");
+    var givenNameIsEmpty = givenName().isEmpty();
+    var surnameIsPresentAndEmpty = surname().map(String::isEmpty).orElse(false);
+    checkState(!givenNameIsEmpty, "Given name must not be empty");
+    checkState(!surnameIsPresentAndEmpty, "Surname must not be empty");
   }
+
+  public static final class Builder extends ImmutablePerson.Builder {}
 }
 ----
 The code is a little longer, but pretty readable, correct and we don't need to write a factory.

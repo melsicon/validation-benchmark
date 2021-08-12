@@ -7,13 +7,15 @@ import java.util.Optional;
 import org.immutables.value.Value;
 
 @Immutable
-@Value.Style(passAnnotations = {Immutable.class})
+@Value.Style(
+    optionalAcceptNullable = true,
+    passAnnotations = {Immutable.class})
 @Value.Immutable
-public abstract class Person {
+public abstract class Person implements WithPerson {
   /* package */ Person() {}
 
-  public static ImmutablePerson.Builder builder() {
-    return ImmutablePerson.builder();
+  public static Builder builder() {
+    return new Builder();
   }
 
   public abstract String givenName();
@@ -22,7 +24,11 @@ public abstract class Person {
 
   @Value.Check
   /* package */ void check() {
-    checkState(!givenName().isEmpty(), "Given name must not be empty");
-    checkState(!(surname().isPresent() && surname().get().isEmpty()), "Surname must not be empty");
+    var givenNameIsEmpty = givenName().isEmpty();
+    var surnameIsPresentAndEmpty = surname().map(String::isEmpty).orElse(false);
+    checkState(!givenNameIsEmpty, "Given name must not be empty");
+    checkState(!surnameIsPresentAndEmpty, "Surname must not be empty");
   }
+
+  public static final class Builder extends ImmutablePerson.Builder {}
 }

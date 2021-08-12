@@ -5,7 +5,7 @@ exports_files(["lombok.config"])
 JVM_FLAGS = [
     "--add-opens",
     "java.base/java.io=ALL-UNNAMED",
-    "-Djava.util.logging.config.file=conf/logging.properties",
+    "-Djava.util.logging.config.file=$(rootpath :conf/logging.properties)",
     "-XX:+CrashOnOutOfMemoryError",
 ]
 

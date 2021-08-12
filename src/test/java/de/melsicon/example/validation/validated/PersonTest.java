@@ -13,10 +13,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public final class PersonTest {
-  @SuppressWarnings("nullness:initialization.static.field.uninitialized") // Initialized in beforeClass()
+  @SuppressWarnings(
+      "nullness:initialization.static.field.uninitialized") // Initialized in beforeClass()
   private static ValidatorFactory validatorFactory;
 
-  @SuppressWarnings("nullness:initialization.static.field.uninitialized") // Initialized in beforeClass()
+  @SuppressWarnings(
+      "nullness:initialization.static.field.uninitialized") // Initialized in beforeClass()
   private static PersonFactory factory;
 
   @EnsuresNonNull({"validatorFactory", "factory"})
