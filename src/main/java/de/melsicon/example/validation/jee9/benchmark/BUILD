@@ -4,8 +4,8 @@ java_library(
     name = "benchmark",
     srcs = glob(["*.java"]),
     javacopts = [
-        "-AskipDefs=\\.jmh_generated\\.",
         "-Xlint:-cast",
+        "-AskipDefs=\\.jmh_generated\\.",
     ],
     visibility = ["//visibility:public"],
     runtime_deps = [

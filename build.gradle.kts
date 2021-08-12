@@ -14,8 +14,9 @@ sourceSets {
   }
 }
 
-tasks.withType<JavaCompile> {
-  options.release.set(11)
+java {
+  sourceCompatibility = JavaVersion.VERSION_11
+  targetCompatibility = JavaVersion.VERSION_11
 }
 
 application {
@@ -55,10 +56,18 @@ dependencies {
   testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.3")
 }
 
-tasks.useLatestVersions {
-  updateBlacklist = listOf(
-    "jakarta.validation:jakarta.validation-api",
-    "org.glassfish:jakarta.el",
-    "org.hibernate.validator:hibernate-validator",
-  )
+tasks.withType<com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask> {
+  rejectVersionIf {
+    candidate.group == "jakarta.validation"
+      && candidate.module == "jakarta.validation-api"
+      && !candidate.version.startsWith("2.")
+
+      || candidate.group == "org.glassfish"
+      && candidate.module == "jakarta.el"
+      && !candidate.version.startsWith("3.")
+
+      || candidate.group == "org.hibernate.validator"
+      && candidate.module == "hibernate-validator"
+      && !candidate.version.startsWith("6.")
+  }
 }
